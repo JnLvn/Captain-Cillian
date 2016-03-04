@@ -1,12 +1,24 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CreateScript : MonoBehaviour {
+	public GameObject scenes;
 	public GameObject sideBar;
+	private RectTransform activePanel;
 	private Animator anim;
 	private bool sideBarActive = false;
 
 	void Start() {
+		List<Texture2D> backgrounds = new List<Texture2D>();
+		Debug.Log("Started");
+		foreach (Texture2D t in Resources.LoadAll("Backgrounds", typeof(Texture2D))) {
+			//backgrounds.Add(t);
+			
+		}
+
 		Time.timeScale = 1;
 		anim = sideBar.GetComponent<Animator>();
 		anim.enabled = false;
@@ -48,11 +60,9 @@ public class CreateScript : MonoBehaviour {
 		if (sideBarActive) {
 			slideOut();
 			sideBarActive = false;
-			Debug.Log("Sliding out");
 			return;
 		} else
 			slideIn();
 			sideBarActive = true;
-			Debug.Log("Sliding in");
 	}
 }
