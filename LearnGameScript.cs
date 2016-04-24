@@ -47,8 +47,18 @@ public class LearnGameScript : MonoBehaviour {
 	private int word6 = 1100;
 	private int word7 = 1300;
 
+	private string irishWord1;
+	private string irishWord2;
+	private string irishWord3;
+	private string irishWord4;
+	private string irishWord5;
+	private string irishWord6;
+	private string irishWord7;
+
 	private int clickCount = 0;
 	private static int endGame;
+
+	private AudioClip wordInIrish;
 
 
 	// Use this for initialization
@@ -222,42 +232,49 @@ public class LearnGameScript : MonoBehaviour {
 	{
 		pic1 = picNum;
 		Debug.Log ("pic1 = " + pic1);
+		getIrishWord (irishWord1);
 	}
 
 	public void setPic2(int picNum2)
 	{
 		pic2 = picNum2;
 		Debug.Log ("pic2 = " + pic2);
+		getIrishWord (irishWord2);
 	}
 
 	public void setPic3(int picNum3)
 	{
 		pic3 = picNum3;
 		Debug.Log ("pic3 = " + pic3);
+		getIrishWord (irishWord3);
 	}
 
 	public void setPic4(int picNum4)
 	{
 		pic4 = picNum4;
 		Debug.Log ("pic4 = " + pic4);
+		getIrishWord (irishWord4);
 	}
 
 	public void setPic5(int picNum5)
 	{
 		pic5 = picNum5;
 		Debug.Log ("pic5 = " + pic5);
+		getIrishWord (irishWord5);
 	}
 
 	public void setPic6(int picNum6)
 	{
 		pic6 = picNum6;
 		Debug.Log ("pic6 = " + pic6);
+		getIrishWord (irishWord6);
 	}
 
 	public void setPic7(int picNum7)
 	{
 		pic7 = picNum7;
 		Debug.Log ("pic7 = " + pic7);
+		getIrishWord (irishWord7);
 	}
 
 	public void setWord1(int wrdNum)
@@ -306,7 +323,7 @@ public class LearnGameScript : MonoBehaviour {
 	public void setClickCount()
 	{
 		clickCount++;
-		Debug.Log ("clickCount = " + clickCount);
+		//Debug.Log ("clickCount = " + clickCount);
 	}
 
 	public void endGameCount()
@@ -314,17 +331,55 @@ public class LearnGameScript : MonoBehaviour {
 		endGame++;
 	}
 
-	public void getSound(string soundName)
+	public void setTheIrishWord1(string word)
 	{
-		switch(soundName)
-		{
-		case "button":
+		word = word.Replace (' ', '_');
+		irishWord1 = word;
+	}
 
-			Debug.Log("Button pressed");
+	public void setTheIrishWord2(string word)
+	{
+		word = word.Replace (' ', '_');
+		irishWord2 = word;
+	}
 
+	public void setTheIrishWord3(string word)
+	{
+		word = word.Replace (' ', '_');
+		irishWord3 = word;
+	}
 
-			break;
-		}
+	public void setTheIrishWord4(string word)
+	{
+		word = word.Replace (' ', '_');
+		irishWord4 = word;
+	}
+
+	public void setTheIrishWord5(string word)
+	{
+		word = word.Replace (' ', '_');
+		irishWord5 = word;
+	}
+
+	public void setTheIrishWord6(string word)
+	{
+		word = word.Replace (' ', '_');
+		irishWord6 = word;
+	}
+
+	public void setTheIrishWord7(string word)
+	{
+		word = word.Replace (' ', '_');
+		irishWord7 = word;
+	}
+
+	public void getIrishWord(string irishWord)
+	{
+		AudioSource audio = GetComponent<AudioSource> ();
+
+		wordInIrish = Resources.Load (irishWord, typeof(AudioClip)) as AudioClip;
+		audio.PlayOneShot (wordInIrish);
+		Debug.Log ("Spoken Irish Word");
 	}
 
 	// shuffle array of numbers 
